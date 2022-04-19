@@ -335,5 +335,29 @@ Place the following code in the REST API action JSON body. This assume that you 
     ]
 }
 ```
+
+### Getting the ID for a User/Contributor or Profile
+
+There are times when the id value for a profile or contributor is needed in a workflow.  These can be retrieved through the use of a REST API action step.
+
+#### Getting the id for a profile
+
+The REST API action to fetch the profile id for a profile would be with this GET call. In this example the profile we are fetching the ID for from a profile select attribute named 'assignment_person'.
+
+GET: <seczetta api url>/profiles/{{ attribute.assignment_person.first.id }}
+
+The response can be captured from:  profile->id
+
+#### Getting the id for a user/contributor
+
+The REST API action to fetch the user id for a user record/contributor would be with this GET call. In this example the user we are fetching the ID for is from a contributor select attribute named 'sponsor'.
+
+GET: <seczetta api url>/users?id={{ attribute.sponsor.first.id }}
+
+The response can be captured from:  users->0->id
+
+
+
 > Please note: At this time, the liquid variable `profile` cannot be used in the REST API Action. It will not allow you to save the REST API Action
+
 
